@@ -21,8 +21,9 @@ class UsersController extends AppController
             if ($user) {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
-            }
+            } else{
             $this->Flash->error(('Invalid username or password, try again'));
+            }
         }
     }
 
@@ -55,5 +56,4 @@ class UsersController extends AppController
         }
         $this->set('user', $user);
     }
-
 }

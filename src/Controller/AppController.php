@@ -41,10 +41,19 @@ class AppController extends Controller
     {
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
-            'loginRedirect' => ['controller' => 'Films', 'action' => 'index'],
-            'logoutRedirect' => ['controller' => 'Pages', 'action' => 'display', 'home']
-             ]);
+            'authorize' => ['Controller'],
+            'loginRedirect' => [
+                'controller' => 'Films',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]
+        ]);
     }
+    
     
     public function beforeFilter(Event $event)
     {
