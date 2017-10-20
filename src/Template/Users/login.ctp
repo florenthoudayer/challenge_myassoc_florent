@@ -1,11 +1,11 @@
-<div class="usersform">
+<div class="users form">
 <?= $this->Flash->render() ?>
 <?= $this->Form->create() ?>
-    <fieldset> 
-        <legend><?= ('Rentrer votre login et mot de passe pour vous connecter') ?></legend>
-        <?= $this->Form->control('username')?>
-         <?=   $this->Form->control('password') ?>
+    <fieldset>
+        <legend><?= __("Merci de rentrer vos nom d'utilisateur et mot de passe") ?></legend>
+        <?= $this->Form->control('email') ?>
+        <?= $this->Form->control('password') ?>
     </fieldset>
-    <?= $this->Form->button(('Connexion'))?>;
-       <?= $this->Form->end() ?>
+<?= $this->Form->button(__('Connexion')); ?>
+<?= $this->Form->end() ?>
 </div>

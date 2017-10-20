@@ -8,12 +8,6 @@ use Cake\Event\Event;
 class UsersController extends AppController
 {
 
-    public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
-        $this->Auth->allow(['add', 'logout']);
-    }
-    
     public function login()
     {
         if ($this->request->is('post')) {
@@ -21,10 +15,16 @@ class UsersController extends AppController
             if ($user) {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
-            } else{
-            $this->Flash->error(('Invalid username or password, try again'));
-            }
+            } 
+            
+            $this->Flash->error(('Votre identifiant ou votre mot de passe est incorrect'));
         }
+    }
+    
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['logout', 'add']);
     }
 
     public function logout()
@@ -50,7 +50,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__("L'utilisateur a été sauvegardé."));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'login']);
             }
             $this->Flash->error(__("Impossible d'ajouter l'utilisateur."));
         }

@@ -5,8 +5,7 @@ namespace App\Controller;
 Class FilmsController extends \App\Controller\AppController
 {
     public function index(){
-        $films = $this->Films->find('all');
-        $this->set(compact('films'));
+        $this->set('films', $this->Films->find('all'));
     }
     
      public function view($id = null)

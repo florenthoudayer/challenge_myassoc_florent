@@ -15,8 +15,9 @@
         <td><?= $film->annee ?></td>
         <td><?= $film->realisateur ?></td>
         <td><?= $film->genre ?></td>
+        <td></td>
         <td><?= $this->Html->link('Modifier', ['action' => 'edit', $film->id]) ?></td>
-        <td><?= $this->Form->PostLink('Supprimer', ['action' => 'delete', $article->id]) ?></td>
+        <td><?= $this->Form->PostLink('Supprimer', ['action' => 'delete', $film->id]) ?></td>
     </tr>
     <?php endforeach; ?>
 </table>
