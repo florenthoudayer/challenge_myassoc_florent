@@ -4,12 +4,14 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+<div class="col-md-3">
+    <nav class="navbar navbar-default">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            <li class="active"><?= __('Actions') ?></li>
+            <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
+        </ul>
+    </nav>
+</div>
 <div class="users form large-9 medium-8 columns content">
     <?= $this->Form->create($user) ?>
     <fieldset>

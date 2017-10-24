@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\ORM\TableRegistry;
 
 /**
  * Films Model
@@ -30,10 +31,14 @@ class FilmsTable extends Table
     {
         parent::initialize($config);
 
-        $this->belongsTo('Acteurs');
+        $this->belongsTo('Acteurs', [
+            'foreignKey' => 'id_acteur',
+        ]);
+                
         $this->setTable('films');
         $this->setDisplayField('id_film');
         $this->setPrimaryKey('id_film');
+        
     }
 
     /**

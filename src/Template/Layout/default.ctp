@@ -26,32 +26,31 @@ $cakeDescription = 'Challenge MyAssoc';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
-
+    <?= $this->Html->css('style.css') ?>
+    <?= $this->Html->css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')?>
+    <?= $this->Html->script([
+    'https://code.jquery.com/jquery-1.12.4.min.js',
+    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+    ])?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
+<body
+    <div class="corps">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+                </li>
             </ul>
+        </nav>
+        <?= $this->Flash->render() ?>
+        <div class="container-fluid">
+            <?= $this->fetch('content') ?>
         </div>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-        <?= $this->fetch('content') ?>
+        <footer>
+        </footer>
     </div>
-    <footer>
-    </footer>
 </body>
 </html>

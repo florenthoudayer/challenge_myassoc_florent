@@ -4,12 +4,14 @@
  * @var \App\Model\Entity\Film $film
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Films'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+<div class="col-md-3">
+    <nav class="navbar navbar-default">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            <li class="heading"><?= __('Actions') ?></li>
+            <li><?= $this->Html->link(__('List Films'), ['action' => 'index']) ?></li>
+        </ul>
+    </nav>
+</div>
 <div class="films form large-9 medium-8 columns content">
     <?= $this->Form->create($film) ?>
     <fieldset>

@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 
+use Cake\ORM\TableRegistry;
+
 /**
  * Films Controller
  *
@@ -26,11 +28,6 @@ class FilmsController extends AppController
         $this->set('_serialize', ['films']);
     }
     
-    public function staticData()
-    {
-        $this->viewBuilder()->layout('datatables');
-    }
-
     /**
      * View method
      *
@@ -40,17 +37,18 @@ class FilmsController extends AppController
      */
     public function view($id = null)
     {
-        $film = $this->Films->get($id, [
+        $films = $this->Films->get($id, [
             'contain' => []
         ]);
         
-        $query = $films->find('all')->contain(['Acteurs']);
-        foreach ($query as $film) {
-            echo $film->acteur->nom;
-            echo $film->acteur->prenom;
-        }
+        $query = TableRegistry::get('Films')->find();
 
-        $this->set('film', $film);
+        $query->leftJoin(
+                ['Acteurs' => 'acteurs'],
+                ['Acteurs.id_acteur = Films.id_acteur']    
+        );
+
+        $this->set('film', $films);
         $this->set('_serialize', ['film']);
     }
 
@@ -119,5 +117,11 @@ class FilmsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+//        public function staticData()
+//    {
+//        $this->viewBuilder()->layout('datatables');
+//    }
+
     
 }

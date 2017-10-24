@@ -4,21 +4,18 @@
  * @var \App\Model\Entity\Film[]|\Cake\Collection\CollectionInterface $films
  */
 ?>
- <?= $this->Html->css([ 'bootstrap.min', 'datatables-extensions/dataTables.bootstrap.min', 'style' ]) ?>
-    <?=
-        $this->Html->script([ 'jquery-1.12.3','bootstrap.min', 'jquery.dataTables.min',
-                             'datatables-extensions/dataTables.bootstrap.min'
-                            ])
-    ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Film'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="films index large-9 medium-8 columns content">
-    <h3><?= __('Films') ?></h3>
-    <table id="moviesTable" cellpadding="0" cellspacing="0">
+<div class="col-md-3">
+    <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            <li class="active"><?= __('Actions') ?></li>
+            <li><?= $this->Html->link(__('New Film'), ['action' => 'add']) ?></li>
+        </ul>
+    </nav>
+</div>
+<div class="col-md-9">
+
+    <table class="table">
+        <caption style="font-size: 30px;color: white;">Liste des films de la base de données</caption>
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id_film') ?></th>
@@ -35,7 +32,7 @@
             <tr>
                 <td><?= $this->Number->format($film->id_film) ?></td>
                 <td><?= h($film->titre) ?></td>
-                <td><?= $this->Number->format($film->annee) ?></td>
+                <td><?= h($film->annee) ?></td>
                 <td><?= h($film->realisateur) ?></td>
                 <td><?= h($film->genre) ?></td>
                 <td><?= h($film->nom) ?></td>
@@ -48,22 +45,15 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
+    <ul class="pager">
+        <?= $this->Paginator->numbers() ?>
+    </ul>
 </div>
 
-<script>
+<!--<script>
     $(document).ready(function(){
         $('#moviesTable').DataTable({
             data: staticData
         });
     });
-</script>
+</script>-->

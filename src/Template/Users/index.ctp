@@ -4,15 +4,17 @@
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="users index large-9 medium-8 columns content">
-    <h3><?= __('Users') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+<div class="col-md-3">
+    <nav class="navbar navbar-default">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            <li class="active"><?= __('Actions') ?></li>
+            <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
+        </ul>
+    </nav>
+</div>
+<div class="col-md-9">
+    <table class="table">
+     <caption style="font-size: 30px;color: white;">Liste des utilisateurs de la base de données</caption>
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -42,14 +44,8 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+    <ul class="pager">
+        <?= $this->Paginator->numbers() ?>
+    </ul>
     </div>
 </div>
