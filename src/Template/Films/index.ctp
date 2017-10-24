@@ -35,7 +35,7 @@
                 <td><?= h($film->annee) ?></td>
                 <td><?= h($film->realisateur) ?></td>
                 <td><?= h($film->genre) ?></td>
-                <td><?= h($film->nom) ?></td>
+                <td><?= h($film->id_acteur) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $film->id_film]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $film->id_film]) ?>

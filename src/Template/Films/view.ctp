@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Id Acteur') ?></th>
-            <td><?= h($film->nom) ?></td>
+            <td><?= h($film->acteur->nom) ?></td>
         </tr>
     </table>
 </div>

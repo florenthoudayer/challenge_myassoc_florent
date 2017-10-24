@@ -80,5 +80,5 @@ class FilmsTable extends Table
 
         return $validator;
     }
- 
+
 }

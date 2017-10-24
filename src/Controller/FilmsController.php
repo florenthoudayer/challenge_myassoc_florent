@@ -22,8 +22,22 @@ class FilmsController extends AppController
      */
     public function index()
     {
+        $this->loadModel('Acteurs');
+        
+//        $films = $this->Films
+//                ->find('all', ['fields' => 'acteurs.nom'])
+//                ->contain([
+//                    'Acteurs'
+//                ])
+//                ->where([
+//                    'Films.id_acteur' => 1])
+//                ->firstOrFail();
+//                
+//        $acteurs = $this->Films->Acteurs->find();
+                        
         $films = $this->paginate($this->Films);
-
+        
+//        $this->set('acteur', $acteurs);
         $this->set(compact('films'));
         $this->set('_serialize', ['films']);
     }
@@ -40,13 +54,6 @@ class FilmsController extends AppController
         $films = $this->Films->get($id, [
             'contain' => []
         ]);
-        
-        $query = TableRegistry::get('Films')->find();
-
-        $query->leftJoin(
-                ['Acteurs' => 'acteurs'],
-                ['Acteurs.id_acteur = Films.id_acteur']    
-        );
 
         $this->set('film', $films);
         $this->set('_serialize', ['film']);
